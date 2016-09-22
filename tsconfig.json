@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "paths": {
+      "my-components": [
+        "src/components"
+      ]
+    },
+    "target": "es5",
+    "types": [
+      "angular",
+      "angular-mocks",
+      "chai",
+      "core-js",
+      "mocha"
+    ]
+  },
+  "exclude": [
+    "./dist",    
+    "./node_modules"
+  ],
+  "include": [
+    "./demo-app/**/*",
+    "./src/**/*"
+  ]
+}
