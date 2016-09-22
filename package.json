@@ -54,7 +54,6 @@
     "karma": "karma start --single-run",
     "lint": "npm-run-all --parallel lint:*",
     "lint:ts": "tslint src/**/*.ts",
-    "postinstall": "npm-run-all test",
     "start": "webpack-dev-server --progress --inline --port 4200 --config ./config/webpack.dev.js",
     "test": "npm-run-all lint karma"
   }
