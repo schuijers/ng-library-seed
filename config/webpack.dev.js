@@ -1,16 +1,42 @@
-'use strict';
+const commonConfig = require('./webpack.common.js');
+const webpackMerge = require('webpack-merge');
+const webpack = require('webpack');
 
-var webpackMerge = require('webpack-merge');
-var commonConfig = require('./webpack.common.js');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
-  output: {
-    publicPath: 'http://localhost:4200/',
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].chunk.js'    
-  },
   devServer: {
     historyApiFallback: true,
+    hot: true,
+    inline: true,
+    open: true,
+    port: 4200,
     stats: 'minimal'
-  }
+  },
+  devtool: 'inline-source-map',
+  entry: {
+    app: './demo-app/app/index.ts',
+    vendor: [
+      'angular'
+    ]
+  },
+  output: {
+    chunkFilename: '[id].chunk.js',    
+    filename: '[name].bundle.js',    
+    publicPath: 'http://localhost:4200/'
+  },
+  plugins: [
+    new ForkCheckerPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.bundle.js'
+    }),
+    new ExtractTextPlugin('[name].css'),
+    new HtmlWebpackPlugin({
+      template: './demo-app/index.html'
+    })
+  ]
 });

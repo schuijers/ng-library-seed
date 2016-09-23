@@ -1,37 +1,27 @@
-'use strict';
+const path = require('path');
 
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 module.exports = {
-  entry: {
-    app: './demo-app/app/index.ts',
-    vendor: [
-      'angular',
-      'rxjs'
+  resolve: {
+    extensions: [
+      '.js',
+      '.ts'
+    ],
+    plugins: [
+      new TsConfigPathsPlugin()
     ]
   },
-
-  resolve: {
-    alias:{
-      'my-components': path.resolve(__dirname, '../src/components')
-    },
-    extensions: ['', '.js', '.ts']
-  },
-
   module: {
-    preLoaders: [
-      {
+    rules: [
+      { 
+        enforce: 'pre',
         test: /\.ts$/,
         loader: 'tslint'
-      }
-    ],
-    loaders: [
+      },
       {
         test: /\.ts$/,
-        loader: 'ts'
+        loader: 'awesome-typescript-loader'
       },
       {
         test: /\.html$/,
@@ -39,20 +29,8 @@ module.exports = {
       }
     ]
   },
-
-  tslint: {
-    emitErrors: true,
-    failOnHint: true
-  },
-
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.bundle.js'
-    }),
-    new ExtractTextPlugin('[name].css'),
-    new HtmlWebpackPlugin({
-      template: './demo-app/index.html'
-    })
-  ]
+  output: {
+    path: path.resolve('./dist'),
+    sourceMapFilename: '[file].map'
+  }
 };

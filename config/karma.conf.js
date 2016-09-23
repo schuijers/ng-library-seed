@@ -1,4 +1,4 @@
-var webpackConfig = require('./webpack.test');
+const webpackConfig = require('./webpack.test');
 
 module.exports = function (config) {
   config.set({
@@ -8,7 +8,7 @@ module.exports = function (config) {
 
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    singleRun: false,
+    singleRun: true,
     colors: true,
     port: 9876,
 

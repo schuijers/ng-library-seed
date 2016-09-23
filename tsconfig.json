@@ -10,6 +10,7 @@
         "src/components"
       ]
     },
+    "sourceMap": true,
     "target": "es5",
     "types": [
       "angular",
@@ -19,10 +20,6 @@
       "mocha"
     ]
   },
-  "exclude": [
-    "./dist",    
-    "./node_modules"
-  ],
   "include": [
     "./demo-app/**/*",
     "./src/**/*"
