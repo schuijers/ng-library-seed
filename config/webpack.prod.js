@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = webpackMerge(config, {
   bail: true,
@@ -19,6 +20,9 @@ module.exports = webpackMerge(config, {
     pathinfo: false
   },
   plugins: [
+    new NgAnnotatePlugin({
+      add: true
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor'
     }),

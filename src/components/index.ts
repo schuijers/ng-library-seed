@@ -1,8 +1,8 @@
 import * as ng from 'angular';
 
-import { HelloWorldModule } from './hello-world';
+import { GreetingModule } from './greeting';
 
 export const MyComponentsModule: ng.IModule = ng
   .module('MyComponents', [
-    HelloWorldModule
+    GreetingModule
   ].map(mod => mod.name));
