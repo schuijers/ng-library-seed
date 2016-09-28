@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/schuijers/ng-library-seed.svg?branch=master)](https://travis-ci.org/schuijers/ng-library-seed)
+[![Build Status](https://semaphoreci.com/api/v1/schuijers/ng-library-seed/branches/master/shields_badge.svg)](https://semaphoreci.com/schuijers/ng-library-seed)
 [![codecov](https://codecov.io/gh/schuijers/ng-library-seed/branch/master/graph/badge.svg)](https://codecov.io/gh/schuijers/ng-library-seed)
 
 # ng-library-seed
